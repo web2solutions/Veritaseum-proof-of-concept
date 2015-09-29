@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html lang="pt-br" ><!-- manifest="cache.appcache" -->
+    <head>
+        <meta charset="UTF-8">
+		<script type="text/javascript" src="id-fix.js"></script>
+		
+        <script>
+			var resource = new NAMESPACE.resource('Eduardo');  // working
+			console.log( resource ); // working
+			console.log( resource.getId() ); // working
+			console.log( resource.getExpensiveResource() ); // working
+			resource.close(); // working
+        </script>
+		
+     </head>
+    <body>
+    
+    </body>
+</html>
