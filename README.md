@@ -7,11 +7,11 @@ The main goal is to indentify all bugs and bad implementations on the file id.js
 The final fixed code will reside inside id-fix.js file.
 
 
-##  Live test for id.js
+##  Live test for id-fix.js
 
 http://www.web2solutions.com.br/Veritaseum-proof-of-concept/t.html
 
-##  Code test for id.js using Qunit
+##  Code test for id-fix.js using Qunit
 
 https://github.com/web2solutions/Veritaseum-proof-of-concept/blob/master/t.html
 
