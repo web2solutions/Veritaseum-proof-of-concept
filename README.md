@@ -22,3 +22,8 @@ https://github.com/web2solutions/Veritaseum-proof-of-concept/blob/master/id-bug.
 ## example of fixed implementation using browser console to debug
 
 https://github.com/web2solutions/Veritaseum-proof-of-concept/blob/master/id-fix.html
+
+
+## Proposal
+
+Implement a global array to store resource IDs and avoid multiple object instances of resource with same id
