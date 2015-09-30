@@ -24,9 +24,10 @@ if (	typeof (NAMESPACE) == 'undefined'  	) {
         //var _expensive_resource = null;
 		
 		
-		var _closed = false
-			// , _all_ids not necessary var
-			, _id = id
+		var 
+			// _closed = false =====> not being used
+			//  _all_ids ======> not necessary var
+			 _id = id
 			, _expensive_resource = null
 			, persona = { }
 			, getExpensiveResource
