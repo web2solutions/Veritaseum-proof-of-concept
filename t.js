@@ -47,3 +47,13 @@
 	QUnit.test( "resource and resource2 are different instances", function( assert ) {
 	  assert.ok( resource !== resource2, "Passed!" );
 	});
+	
+	
+	//QUnit.test( "check reallocating resource", function( assert ) {
+	//  assert.ok( resource.getExpensiveResource() === resource2.getExpensiveResource(), "unnecessarily reallocating resource(Eduardo)" );
+	//});
+	
+	
+	QUnit.test( "compare expensiveResources with same id", function( assert ) {
+	  assert.ok( resource.getExpensiveResource().value === resource2.getExpensiveResource().value, "equal" );
+	});
