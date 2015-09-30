@@ -1,5 +1,11 @@
 # Veritaseum-proof-of-concept
 
+this is just a proof of concept repository.
+
+The main goal is to indentify all bugs and bad implementations on the file id.js.
+
+The final fixed code will reside inside id-fix.js file.
+
 
 ##  Live test for id.js
 
