@@ -49,11 +49,13 @@
 	});
 
 
-	//QUnit.test( "check reallocating resource", function( assert ) {
-	//  assert.ok( resource.getExpensiveResource() === resource2.getExpensiveResource(), "unnecessarily reallocating resource(Eduardo)" );
-	//});
+	QUnit.test( "check reallocating resource", function( assert ) {
+	 assert.ok( resource.getExpensiveResource() === resource2.getExpensiveResource(), "unnecessarily reallocating resource(Eduardo)" );
+	});
 
 
 	QUnit.test( "compare expensiveResources with same id", function( assert ) {
-	  assert.ok( resource.getExpensiveResource().value === resource2.getExpensiveResource().value, "equal" );
+	  assert.ok( resource.getExpensiveResource().start === resource2.getExpensiveResource().start, "unnecessarily reallocating resource(Eduardo)" );
+	  assert.ok( resource.getExpensiveResource().end === resource2.getExpensiveResource().end, "unnecessarily reallocating resource(Eduardo)" );
+	  assert.ok( resource.getExpensiveResource().value === resource2.getExpensiveResource().value, "unnecessarily reallocating resource(Eduardo)" );
 	});
