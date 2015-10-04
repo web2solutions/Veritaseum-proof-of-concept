@@ -22,9 +22,9 @@ if (	typeof (NAMESPACE) == 'undefined'  	) {
         //var _closed = false;
         //var _id = id;
         //var _expensive_resource = null;
-		
-		
-		var 
+
+
+		var
 			// _closed = false =====> not being used
 			//  _all_ids ======> not necessary var
 			 _id = id
@@ -33,8 +33,8 @@ if (	typeof (NAMESPACE) == 'undefined'  	) {
 			, getExpensiveResource
 			, getId
 			, close
-		
-		
+
+
         // Public data
 		// XXX bad pratice, too many var statements XXX //
         //var persona = { };
@@ -43,33 +43,33 @@ if (	typeof (NAMESPACE) == 'undefined'  	) {
         getExpensiveResource = function () {
             return _expensive_resource;
         }
-        
+
         persona.getExpensiveResource = getExpensiveResource;
 
         getId = function () {
             return _id;
         }
-        
+
         persona.getId = getId;
 
         close = function () {
            	// XXXX delete is for associative arrays
 			// XXXX _all_ids is not necessary on this code
 			// delete _all_ids[_id];
-            
+
 			// XXXXX this flag is not being used on any other place of the code
 			this._closed = true;
         }
 
         persona.close = close;
-        
+
         // Private methods
         function _lookupOrCreateExpensiveResourceById(id) {
-            
+
 			// XXXXXX handling _all_ids is very unnecessary due it does not provide any public way to set a different value to it.
-			
+
 			//_expensive_resource = _all_ids[id];
-            
+
             //if (_expensive_resource == null) {
                 // Just pretend for the sake of this example
                 _expensive_resource = {
@@ -78,16 +78,16 @@ if (	typeof (NAMESPACE) == 'undefined'  	) {
 
                 //_all_ids[id] = _expensive_resource;
             //}
-            
+
             return _expensive_resource;
         }
-        
+
         // Initialization
         _expensive_resource = _lookupOrCreateExpensiveResourceById(id);
-        
+
         return persona;
     }
 
     NAMESPACE.resource = resource;
-	
+
 }
