@@ -1,8 +1,7 @@
-	var resource = new NAMESPACE.resource('Eduardo');  // working
-	var resource2 = new NAMESPACE.resource('Eduardo');  // working
+	var resource = NAMESPACE.resource('Eduardo');  // working
+	var resource2 = NAMESPACE.resource('Eduardo');  // working
 
-	resource.close();
-	resource2.close();
+	
 
 
   	QUnit.test( "check resource variable type", function( assert ) {
@@ -32,29 +31,22 @@
 	QUnit.test( "check resource2's ExpensiveResource", function( assert ) {
 	  assert.ok( resource2.getExpensiveResource().value === "I'm a very expensive resource associated with ID Eduardo", "Passed!" );
 	});
+
 	
-
-	// this test always will pass when comparing objects
-	QUnit.test( "resource and resource2 are equals - check object comparison", function( assert ) {
-	  assert.ok( resource === resource2, "Passed!" );
-	});
-	
-	// this test may pass or not, it will depend of structure of both objects
-	QUnit.test( "resource and resource2 are equals - check object as string", function( assert ) {
-	  assert.ok( JSON.stringify( resource ) === JSON.stringify( resource2 ), "Passed!" );
-	});
-
-
-	// this test never will pass when comparing objects
 	QUnit.test( "check reallocating resource", function( assert ) {
 	 assert.ok( resource.getExpensiveResource() === resource2.getExpensiveResource(), "unnecessarily reallocating resource(Eduardo)" );
 	});
 
-	// this test may pass or not, it will depend of structure of both objects
+	
 	QUnit.test( "check reallocating resource - check object as string", function( assert ) {
 	 assert.ok( JSON.stringify( resource.getExpensiveResource() ) === JSON.stringify( resource2.getExpensiveResource() ), "unnecessarily reallocating resource(Eduardo)" );
 	});
 
+	
+	QUnit.test( "ensure only one expensive resource", function( assert ) {
+	 assert.ok( NAMESPACE._resources_created == 1, "unnecessarily reallocating resource(Eduardo)" );
+	});
+	
 	
 	// this test will never pass until both object properties are equal
 	QUnit.test( "compare expensiveResources with same id", function( assert ) {
@@ -64,6 +56,8 @@
 	});
 	
 	
+	resource.close();
+	resource2.close();
 	
 	
 	QUnit.test( "resource is closed", function( assert ) {
@@ -72,5 +66,5 @@
 	
 	
 	QUnit.test( "resource2 is closed", function( assert ) {
-	  assert.ok( resource._closed === true, "Passed!" );
+	  assert.ok( resource2._closed === true, "Passed!" );
 	});

@@ -2,21 +2,28 @@
 <html lang="pt-br" ><!-- manifest="cache.appcache" -->
     <head>
         <meta charset="UTF-8">
-		<script type="text/javascript" src="id-fix.js"></script>
+		<script type="text/javascript" src="id-fixn.js"></script>
 		
         <script>
-			var resource = new NAMESPACE.resource('Eduardo');  // working
-			console.log( resource ); // working
-			console.log( resource.getId() ); // working
+			var resource = NAMESPACE.resource('Eduardo');  // working
+			//console.log( resource ); // working
+			//console.log( resource.getId() ); // working
 			console.log( resource.getExpensiveResource() ); // working
-			resource.close(); // working
+			//resource.close(); // working
 			
 			
-			var resource2 = new NAMESPACE.resource('Eduardo');  // working
-			console.log( resource2 ); // working
-			console.log( resource2.getId() ); // working
+			var resource2 = NAMESPACE.resource('Eduardo');  // working
+			//console.log( resource2 ); // working
+			//console.log( resource2.getId() ); // working
 			console.log( resource2.getExpensiveResource() ); // working
-			resource2.close(); // working
+			//resource2.close(); // working
+			
+			
+			
+			console.log( resource.getExpensiveResource() === resource2.getExpensiveResource() ); // working
+			
+			
+			//console.log( NAMESPACE.staff )
         </script>
 		
      </head>

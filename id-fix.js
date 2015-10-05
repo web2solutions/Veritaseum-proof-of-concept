@@ -5,69 +5,45 @@
   hhaW4oKnppcChzWy0yOjotMl0sIHNbOjotMl0pKSk=
 \*======================================================================*/
 
+// lets replace the multiple comparison (to check if NAMESPACE is defined or null) by simple using the || operator
+var NAMESPACE = NAMESPACE || (function(){
+	'strict';
+	var createExpensiveResource = function (params) {
+		// Just pretend for now (hint: you do not want this code to run
+		// more than is absolutely necessary)
+		var millis = 3000, start, end, _expensive_resource;
+		console.log('busy waiting for ' + millis + ' ms...');
+		start = +(new Date());
+		while (new Date() - start < millis);
+		end = +(new Date());
+		console.log('done!');
 
+		_expensive_resource = {
+			start: start,
+			end: end,
+			value: "I'm a very expensive resource associated with ID " + params.id
+		};
 
-// you may simple check if NAMESPACE is defined insted checking if it is null (throwing a reference error)
-if (	typeof (NAMESPACE) == 'undefined'  	) {
-    window['NAMESPACE'] = {};
+		++NAMESPACE._resources_created;
 
-    NAMESPACE._resources_created = 0; // Can we make this less accessible somehow?
-
-    var createExpensiveResource = function (params) {
-        // Just pretend for now (hint: you do not want this code to run
-        // more than is absolutely necessary)
-        var millis = 3000;
-        console.log('busy waiting for ' + millis + ' ms...');
-        var start = +(new Date());
-        while (new Date() - start < millis);
-        var end = +(new Date());
-        console.log('done!');
-
-        var _expensive_resource = {
-            start: start,
-            end: end,
-            value: "I'm a very expensive resource associated with ID " + params.id
-        };
-
-        ++NAMESPACE._resources_created;
-
-        return _expensive_resource;
-    };
-
-    NAMESPACE.createExpensiveResource = createExpensiveResource;
-
-    var getTotalExpensiveResourcesCreated = function () {
-        return NAMESPACE._resources_created;
-    };
-
-    NAMESPACE.getTotalExpensiveResourcesCreated = getTotalExpensiveResourcesCreated;
-
-    // Creates an object that allocates a new or references an
-    // existing very expensive resource associated with `id`
-    var resource = function (id) {
+		return _expensive_resource;
+	},
+	
+	getTotalExpensiveResourcesCreated = function () {
+		return self._resources_created;
+	},
+	
+	resource = function (id) {
         'strict';
-		// XXX bad pratice, too many var statements XXX //
-		// Private data
-        //var _all_ids = new Array();
-        //var _closed = false;
-        //var _id = id;
-        //var _expensive_resource = null;
-
-
 		var
-			// _closed = false =====> not being used
-			//  _all_ids ======> not necessary var
-			 _id = id
+			  _id = id
 			, _expensive_resource = null
 			, persona = { }
 			, getExpensiveResource
 			, getId
 			, close
-
-
-        // Public data
-		// XXX bad pratice, too many var statements XXX //
-        //var persona = { };
+			, self = this
+			
 
         // Public methods
         getExpensiveResource = function () {
@@ -83,28 +59,23 @@ if (	typeof (NAMESPACE) == 'undefined'  	) {
         persona.getId = getId;
 
         close = function () {
-           	// XXXX delete is for associative arrays
-			// XXXX _all_ids is not necessary on this code
-			// delete _all_ids[_id];
-
-			// XXXXX this flag is not being used on any other place of the code
+			delete NAMESPACE._all_ids[_id];
 			this._closed = true;
         }
 
         persona.close = close;
+		persona._closed = false;
 
         // Private methods
         function _lookupOrCreateExpensiveResourceById(id) {
 
-			// XXXXXX handling _all_ids is very unnecessary due it does not provide any public way to set a different value to it.
-
-			//_expensive_resource = _all_ids[id];
-
-            //if (_expensive_resource == null) {
+			_expensive_resource = NAMESPACE._all_ids[id];
+			
+            if (_expensive_resource == null) {
                 _expensive_resource = createExpensiveResource({ id: id });
 
-                //_all_ids[id] = _expensive_resource;
-            //}
+                NAMESPACE._all_ids[id] = _expensive_resource;
+            }
 
             return _expensive_resource;
         }
@@ -113,8 +84,17 @@ if (	typeof (NAMESPACE) == 'undefined'  	) {
         _expensive_resource = _lookupOrCreateExpensiveResourceById(id);
 
         return persona;
-    }
+    },
+	
+	
+	API = {
+		_all_ids : []	
+		, resource : resource
+		, _resources_created : 0
+		, createExpensiveResource : createExpensiveResource
+		, resource : resource
+		
+	};
 
-    NAMESPACE.resource = resource;
-
-}
+	return API
+})();
