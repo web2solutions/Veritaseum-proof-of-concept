@@ -1,13 +1,8 @@
 	var resource = new NAMESPACE.resource('Eduardo');  // working
-	
-	
-	
-	
-
-
 	var resource2 = new NAMESPACE.resource('Eduardo');  // working
 
-	
+	resource.close();
+	resource2.close();
 
 
   	QUnit.test( "check resource variable type", function( assert ) {
@@ -40,16 +35,13 @@
 	
 
 	// this test always will pass when comparing objects
-	QUnit.test( "resource and resource2 are different - check objects comparison", function( assert ) {
-	  assert.ok( resource !== resource2, "Passed!" );
+	QUnit.test( "resource and resource2 are equals - check object comparison", function( assert ) {
+	  assert.ok( resource === resource2, "Passed!" );
 	});
 	
-	
-	console.log( JSON.stringify( resource ),  JSON.stringify( resource2 ) )
-	
 	// this test may pass or not, it will depend of structure of both objects
-	QUnit.test( "resource and resource2 are different - check object as string", function( assert ) {
-	  assert.ok( JSON.stringify( resource ) !== JSON.stringify( resource2 ), "Passed!" );
+	QUnit.test( "resource and resource2 are equals - check object as string", function( assert ) {
+	  assert.ok( JSON.stringify( resource ) === JSON.stringify( resource2 ), "Passed!" );
 	});
 
 
@@ -72,8 +64,7 @@
 	});
 	
 	
-	resource.close();
-	resource2.close();
+	
 	
 	QUnit.test( "resource is closed", function( assert ) {
 	  assert.ok( resource._closed === true, "Passed!" );
