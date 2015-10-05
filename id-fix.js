@@ -30,23 +30,19 @@ var NAMESPACE = NAMESPACE || (function(){
 	},
 	
 	getTotalExpensiveResourcesCreated = function () {
-		return self._resources_created;
+		return NAMESPACE._resources_created;
 	},
 	
 	resource = function (id) {
-        'strict';
-		var
-			  _id = id
+		'strict';
+		var  _id = id
 			, _expensive_resource = null
 			, persona = { }
 			, getExpensiveResource
 			, getId
 			, close
-			, self = this
 			
-
-        // Public methods
-        getExpensiveResource = function () {
+		getExpensiveResource = function () {
             return _expensive_resource;
         }
 
@@ -84,8 +80,8 @@ var NAMESPACE = NAMESPACE || (function(){
         _expensive_resource = _lookupOrCreateExpensiveResourceById(id);
 
         return persona;
-    },
-	
+		
+	},
 	
 	API = {
 		_all_ids : []	
