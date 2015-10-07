@@ -18,7 +18,7 @@
 	});
 
 
-
+	console.log(  resource.getExpensiveResource().value  )
 	QUnit.test( "check resource's ExpensiveResource", function( assert ) {
 	  assert.ok( resource.getExpensiveResource().value === "I'm a very expensive resource associated with ID Eduardo", "Passed!" );
 	});
@@ -42,12 +42,6 @@
 	QUnit.test( "check reallocating resource - check object as string", function( assert ) {
 	 assert.ok( JSON.stringify( resource.getExpensiveResource() ) === JSON.stringify( resource2.getExpensiveResource() ), "unnecessarily reallocating resource(Eduardo)" );
 	});
-
-	
-	//QUnit.test( "ensure only one expensive resource", function( assert ) {
-	 //assert.ok( NAMESPACE._resources_created == 1, "unnecessarily reallocating resource(Eduardo)" );
-	//});
-	
 	
 	
 	QUnit.test( "compare expensiveResources with same id", function( assert ) {
@@ -61,20 +55,6 @@
 	  assert.ok( typeof NAMESPACE.getTotalExpensiveResourcesCreated === 'undefined', "undefined" );
 	});
 	
-	//console.log( typeof NAMESPACE.getTotalExpensiveResourcesCreated )
-	
-	resource.close();
-	resource2.close();
-	
-	
-	QUnit.test( "resource is closed", function( assert ) {
-	  assert.ok( resource._closed === true, "Passed!" );
-	});
-	
-	
-	QUnit.test( "resource2 is closed", function( assert ) {
-	  assert.ok( resource2._closed === true, "Passed!" );
-	});
 	
 	
 	QUnit.test( "resource is closed at the appropriate time", function( assert ) {
