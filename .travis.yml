@@ -2,8 +2,8 @@ language: node_js
 node_js:
   - "0.12"
 before_install: 
-	- npm install -g grunt-cli
-	- npm install grunt-contrib-qunit --save-dev
-	- npm install grunt-http-server
+  - npm install -g grunt-cli
+  - npm install grunt-contrib-qunit --save-dev
+  - npm install grunt-http-server
 install: npm install
 #before_script: grunt build
