@@ -1,4 +1,4 @@
-# Veritaseum-proof-of-concept
+# Veritaseum-proof-of-concept  [![NPM version](https://badge.fury.io/js/veritaseum-proof-of-concept.png)](http://badge.fury.io/js/veritaseum-proof-of-concept)
 
 this is just a proof of concept repository.
 
