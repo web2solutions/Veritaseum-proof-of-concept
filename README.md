@@ -56,6 +56,8 @@ Install dependencies:
 
 #### Step 4
 
+###### Browser
+
 Now , if you want to run the test on **browser** (please see Step 2), type on terminal:
 
     $ grunt livetest
@@ -63,6 +65,8 @@ Now , if you want to run the test on **browser** (please see Step 2), type on te
 Then open the browser and reach the following address: 
 
 http://localhost:8282/test/t.html
+
+###### Terminal
 
 Now , if you want to run the test on **terminal** (please see Step 2), type on terminal:
 
