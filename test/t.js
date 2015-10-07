@@ -60,8 +60,11 @@
 	QUnit.test( "resource is closed at the appropriate time", function( assert ) {
 		var rsrc1 = NAMESPACE.resource(42);
 		var rsrc2 = NAMESPACE.resource(42);
+		console.log(rsrc1);
+		
 		rsrc1.close();
 		
+		console.log(rsrc1);
 		
 		var rsrc3 = NAMESPACE.resource(42);
 		assert.ok( rsrc2.getExpensiveResource() === rsrc3.getExpensiveResource(), "unnecessarily reallocating resource(42)" );
