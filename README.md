@@ -13,6 +13,10 @@ If you want to run and test the code, you will need ***npm***, ***Node.js***. It
 
 Download this repository and uncompress to a given directory, lets assume: ***/Users/YourName/apps/Veritaseum-proof-of-concept/***
 
+Or, use ***npm**
+
+    npm i veritaseum-proof-of-concept
+
 
 #### Step 1
 
