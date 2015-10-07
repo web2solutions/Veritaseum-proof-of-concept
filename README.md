@@ -22,18 +22,6 @@ Or, use ***npm**
 
 Open and edit the file Gruntfile.js. Look for the following lines:
 
-    root: '/Users/eduardoalmeida/apps/Veritaseum-proof-of-concept/',
-
-    cache: '/Users/eduardoalmeida/apps/Veritaseum-proof-of-concept/',
-
-Now change it to:
-
-    root: '/Users/YourName/apps/Veritaseum-proof-of-concept/',
-
-    cache: '/Users/YourName/apps/Veritaseum-proof-of-concept/',
-
-#### Step 2
-
 If you want to test on **browser**, please set runInBackground as false in Gruntfile.js
 
     runInBackground: false
@@ -42,7 +30,7 @@ If you want to test on **terminal**, please set runInBackground as true in Grunt
 
     runInBackground: true
 
-#### Step 3
+#### Step 2
 
 Now, on terminal, navigate to the project directory:
 
@@ -58,7 +46,7 @@ Install dependencies:
 
     $ npm install grunt-http-server
 
-#### Step 4
+#### Step 3
 
 ###### Browser
 

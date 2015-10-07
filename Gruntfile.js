@@ -11,7 +11,7 @@ module.exports = function (grunt) {
 		, 'http-server': {
 			'dev': {
 				// the server root directory  ... please change it
-				root: '/Users/eduardoalmeida/apps/Veritaseum-proof-of-concept/'
+				root: '.'
 				, // the server port 
 				// can also be written as a function, e.g. 
 				// port: function() { return 8282; } 
@@ -22,7 +22,7 @@ module.exports = function (grunt) {
 				// Specify "0.0.0.0" to be available everywhere 
 				host: "0.0.0.0"
 				, // the server cache directory  ... please change it
-				cache: '/Users/eduardoalmeida/apps/Veritaseum-proof-of-concept/'
+				cache: '.'
 				, showDir: true
 				, autoIndex: true
 				, // server default file extension 

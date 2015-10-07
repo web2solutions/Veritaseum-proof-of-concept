@@ -1,6 +1,6 @@
 {
   "name": "veritaseum-proof-of-concept",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "proof of concept - tests",
   "devDependencies": {
     "grunt": "^0.4.5",
@@ -13,7 +13,7 @@
   },
   "main": "Gruntfile.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "grunt test"
   },
   "repository": {
     "type": "git",
