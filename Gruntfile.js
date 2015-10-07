@@ -28,7 +28,7 @@ module.exports = function (grunt) {
 				, // server default file extension 
 				ext: "html"
 				, // run in parallel with other tasks 
-				runInBackground: true
+				runInBackground: false
 			, }
 		}
 	});
@@ -45,7 +45,7 @@ module.exports = function (grunt) {
             grunt.task.run('qunit:all');
     });
 	
-	grunt.registerTask('test', ['http-server:dev', 'qunittest:t']);
+	grunt.registerTask('test', ['http-server:dev', 'qunittest']);
 	grunt.registerTask('livetest', ['http-server:dev']);
 	
 	
