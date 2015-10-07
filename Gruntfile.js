@@ -58,7 +58,7 @@ module.exports = function (grunt) {
 		
 		
 		
-		, watch: {
+		/*, watch: {
 			scripts: {
 				files: [
 					'id-fix.js'
@@ -71,14 +71,14 @@ module.exports = function (grunt) {
 					interrupt: true
 				, }
 			}
-		}
+		}*/
 		
 		
 		
 		//my_src_files: ['foo/*.js', 'bar/*.js'],
 	});
 	
-	grunt.loadNpmTasks('grunt-contrib-watch');
+	//grunt.loadNpmTasks('grunt-contrib-watch');
 	//grunt.loadNpmTasks('grunt-contrib-jshint');
 	//grunt.loadNpmTasks('grunt-mocha');
 	grunt.loadNpmTasks('grunt-contrib-qunit');
