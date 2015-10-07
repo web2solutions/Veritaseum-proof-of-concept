@@ -1,63 +1,31 @@
-	var resource = NAMESPACE.resource('Eduardo');  // working
-	var resource2 = NAMESPACE.resource('Eduardo');  // working
-
+	QUnit.test( "basic tests - @Eduardo", function( assert ) {
+	  
+		var resource = NAMESPACE.resource('Eduardo');  // working
+		var resource2 = NAMESPACE.resource('Eduardo');  // working
+	  
+	  
+	  	assert.ok( ((typeof resource == "object") && (resource !== null) && (Object.prototype.toString.call(resource) !== '[object Array]')), "Passed!" );
+		assert.ok( ((typeof resource2 == "object") && (resource2 !== null) && (Object.prototype.toString.call(resource2) !== '[object Array]')), "Passed!" );
+		assert.ok( resource.getId() === 'Eduardo', "Passed!" );
+		assert.ok( resource.getExpensiveResource().value === "I'm a very expensive resource associated with ID Eduardo", "Passed!" );
+		assert.ok( resource2.getId() === 'Eduardo', "Passed!" );
+		assert.ok( resource2.getExpensiveResource().value === "I'm a very expensive resource associated with ID Eduardo", "Passed!" );
+		assert.ok( resource.getExpensiveResource() === resource2.getExpensiveResource(), "unnecessarily reallocating resource(Eduardo)" );
+		assert.ok( JSON.stringify( resource.getExpensiveResource() ) === JSON.stringify( resource2.getExpensiveResource() ), "unnecessarily reallocating resource(Eduardo)" );	
+		assert.ok( resource.getExpensiveResource().start === resource2.getExpensiveResource().start, "unnecessarily reallocating resource(Eduardo) - checking start's property value" );
+		assert.ok( resource.getExpensiveResource().end === resource2.getExpensiveResource().end, "unnecessarily reallocating resource(Eduardo) - checking end's property value" );
+		assert.ok( resource.getExpensiveResource().value === resource2.getExpensiveResource().value, "unnecessarily reallocating resource(Eduardo) - checking value's property value" );
 	
-
-
-  	QUnit.test( "check resource variable type", function( assert ) {
-	  assert.ok( ((typeof resource == "object") && (resource !== null) && (Object.prototype.toString.call(resource) !== '[object Array]')), "Passed!" );
-	});
-
-	QUnit.test( "check resource2 variable type", function( assert ) {
-	  assert.ok( ((typeof resource2 == "object") && (resource2 !== null) && (Object.prototype.toString.call(resource2) !== '[object Array]')), "Passed!" );
-	});
-
-
-	QUnit.test( "check resource id", function( assert ) {
-	  assert.ok( resource.getId() === 'Eduardo', "Passed!" );
-	});
-
-
-	//console.log(  resource.getExpensiveResource().value  )
-	QUnit.test( "check resource's ExpensiveResource", function( assert ) {
-	  assert.ok( resource.getExpensiveResource().value === "I'm a very expensive resource associated with ID Eduardo", "Passed!" );
-	});
-
-
-	QUnit.test( "check resource2 id", function( assert ) {
-	  assert.ok( resource2.getId() === 'Eduardo', "Passed!" );
-	});
-
-
-	QUnit.test( "check resource2's ExpensiveResource", function( assert ) {
-	  assert.ok( resource2.getExpensiveResource().value === "I'm a very expensive resource associated with ID Eduardo", "Passed!" );
-	});
-
+		// clear memory
+		resource.close();
+		resource2.close();
 	
-	QUnit.test( "check reallocating resource", function( assert ) {
-	 assert.ok( resource.getExpensiveResource() === resource2.getExpensiveResource(), "unnecessarily reallocating resource(Eduardo)" );
-	});
-
-	
-	QUnit.test( "check reallocating resource - check object as string", function( assert ) {
-	 assert.ok( JSON.stringify( resource.getExpensiveResource() ) === JSON.stringify( resource2.getExpensiveResource() ), "unnecessarily reallocating resource(Eduardo)" );
-	});
-	
-	
-	QUnit.test( "compare expensiveResources with same id", function( assert ) {
-	  assert.ok( resource.getExpensiveResource().start === resource2.getExpensiveResource().start, "unnecessarily reallocating resource(Eduardo) - checking start's property value" );
-	  assert.ok( resource.getExpensiveResource().end === resource2.getExpensiveResource().end, "unnecessarily reallocating resource(Eduardo) - checking end's property value" );
-	  assert.ok( resource.getExpensiveResource().value === resource2.getExpensiveResource().value, "unnecessarily reallocating resource(Eduardo) - checking value's property value" );
-	});
-	
-	
-	QUnit.test( "getTotalExpensiveResourcesCreated inacessible", function( assert ) {
-	  assert.ok( typeof NAMESPACE.getTotalExpensiveResourcesCreated === 'undefined', "undefined" );
+	  	assert.ok( typeof NAMESPACE.getTotalExpensiveResourcesCreated === 'undefined', "undefined" );
 	});
 	
 	
 	
-	QUnit.test( "resource is closed at the appropriate time", function( assert ) {
+	QUnit.test( "resource is closed at the appropriate time - @Matt", function( assert ) {
 		var rsrc1 = NAMESPACE.resource(42);
 		var rsrc2 = NAMESPACE.resource(42);
 		console.log(rsrc1);
@@ -73,4 +41,52 @@
 		
 		var rsrc4 = NAMESPACE.resource(42);
 		assert.ok( rsrc4.getExpensiveResource() !== rsrc1.getExpensiveResource(), "unnecessarily keeping resource(42) alive" );
+		
+		// clear memory
+		rsrc4.close();
+	});
+	
+	
+	
+	QUnit.test( "resource is closed at the appropriate time - testing multiple ids - @Eduardo", function( assert ) {
+		var rsrc1 = NAMESPACE.resource(44);
+		var rsrc2 = NAMESPACE.resource(44);
+		console.log(rsrc1);
+		
+		rsrc1.close();
+		
+		console.log(rsrc1);
+		
+		var rsrc3 = NAMESPACE.resource(44);
+		assert.ok( rsrc2.getExpensiveResource() === rsrc3.getExpensiveResource(), "unnecessarily reallocating resource(42)" );
+		rsrc2.close();
+		rsrc3.close();
+		
+		var rsrc4 = NAMESPACE.resource(44);
+		assert.ok( rsrc4.getExpensiveResource() !== rsrc1.getExpensiveResource(), "unnecessarily keeping resource(42) alive" );
+		rsrc4.close();
+		
+		var rsrc1_ = NAMESPACE.resource(43);
+		var rsrc2_ = NAMESPACE.resource(43);
+		console.log(rsrc1);
+		
+		rsrc1_.close();
+		
+		console.log(rsrc1_);
+		
+		var rsrc3_ = NAMESPACE.resource(43);
+		assert.ok( rsrc2_.getExpensiveResource() === rsrc3_.getExpensiveResource(), "unnecessarily reallocating resource(42)" );
+		rsrc2_.close();
+		rsrc3_.close();
+		
+		var rsrc4_ = NAMESPACE.resource(43);
+		assert.ok( rsrc4_.getExpensiveResource() !== rsrc1_.getExpensiveResource(), "unnecessarily keeping resource(42) alive" );
+		rsrc4_.close();
+	});
+	
+	
+	
+	// necessary to close all active resources to make this test to be passed
+	QUnit.test( "check total active expensive resources - @Eduardo", function( assert ) {
+		assert.ok( NAMESPACE._resources_created == 0, "no active expensive resources" );
 	});
