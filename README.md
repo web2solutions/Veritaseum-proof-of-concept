@@ -50,7 +50,7 @@ Install grunt (if you don't have it installed):
 
 Install dependencies:
 
-    $ npm unistall grunt-contrib-connect --save-dev
+    $ npm install grunt-contrib-connect --save-dev
 
     $ npm install grunt-http-server
 
