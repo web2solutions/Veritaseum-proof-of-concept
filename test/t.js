@@ -18,7 +18,7 @@
 	});
 
 
-	console.log(  resource.getExpensiveResource().value  )
+	//console.log(  resource.getExpensiveResource().value  )
 	QUnit.test( "check resource's ExpensiveResource", function( assert ) {
 	  assert.ok( resource.getExpensiveResource().value === "I'm a very expensive resource associated with ID Eduardo", "Passed!" );
 	});
