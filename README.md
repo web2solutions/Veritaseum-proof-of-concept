@@ -1,4 +1,4 @@
-# Veritaseum-proof-of-concept  [![NPM version](https://badge.fury.io/js/veritaseum-proof-of-concept.png)](http://badge.fury.io/js/veritaseum-proof-of-concept)
+# Veritaseum-proof-of-concept  [![NPM version](https://badge.fury.io/js/veritaseum-proof-of-concept.png)](http://badge.fury.io/js/veritaseum-proof-of-concept) [![Build Status](https://travis-ci.org/web2solutions/Veritaseum-proof-of-concept.svg?branch=master)](https://travis-ci.org/web2solutions/Veritaseum-proof-of-concept)
 
 this is just a proof of concept repository.
 
