@@ -1,6 +1,6 @@
 {
   "name": "veritaseum-proof-of-concept",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "proof of concept - tests",
   "devDependencies": {
     "grunt": "^0.4.5",
