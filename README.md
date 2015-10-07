@@ -34,7 +34,7 @@ If you want to test on **browser**, please set runInBackground as false in Grunt
 
     runInBackground: false
 
-If you want to test on **browser**, please set runInBackground as true in Gruntfile.js
+If you want to test on **terminal**, please set runInBackground as true in Gruntfile.js
 
     runInBackground: true
 
