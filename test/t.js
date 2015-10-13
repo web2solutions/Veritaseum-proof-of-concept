@@ -46,7 +46,11 @@
 
 	QUnit.test( "resource is closed at the appropriate time - testing multiple ids - @Eduardo", function( assert ) {
 		var rsrc1 = NAMESPACE.resource(44);
-		var rsrc2 = NAMESPACE.resource(44);
+		var rsrc2 = NAMESPACE.resource(44)
+		
+		
+		
+		
 		rsrc1.close();
 
 		var rsrc3 = NAMESPACE.resource(44);
@@ -121,6 +125,15 @@
 			* Died on test #5     at http://mac.web2.eti.br/Veritaseum-proof-of-concept/test/t.js:89:8: resource is already closed
 			*/
 			//first_rsrc1.close(); // call it a second time to test whether it has side effects
+			try
+			{
+				first_rsrc1.close();
+				assert.ok( false, "resource can be closed more than one time" );
+			}
+			catch(e)
+			{
+				assert.ok( true, "resource can not be closed more than one time");
+			}
 
 			
 			/*
@@ -128,7 +141,7 @@
 			* all the 'close()' logic again.
 			*/
 			//var first_rsrc3 = NAMESPACE.resource(first_rsrc3);
-			var first_rsrc3 = NAMESPACE.resource('13');
+			var first_rsrc3 = NAMESPACE.resource(first_id);
 			var first_rsrc3_expensive = first_rsrc3.getExpensiveResource(); // keep a reference for later testing
 			
 			
@@ -143,8 +156,19 @@
 			first_rsrc3.close();
 			assert.ok( typeof(first_rsrc3.getExpensiveResource().value) === 'undefined', "closed resource returns non-null for expensive resource" );
 
-			var first_rsrc4 = NAMESPACE.resource(first_rsrc3);
+			var first_rsrc4 = NAMESPACE.resource(first_id);
 			var first_rsrc4_expensive = first_rsrc4.getExpensiveResource(); // keep a reference for later testing
 			assert.ok( first_rsrc3_expensive !== first_rsrc4_expensive, "unnecessarily keeping resource(" + JSON.stringify(first_id) + ") alive" );
+			
+			/*
+			* lets close the remaining resources 
+			*/
+			second_rsrc.close();
+			first_rsrc4.close();
+			/*
+			* lets check if is there any active expensive resource
+			*/
+			assert.ok( NAMESPACE._resources_created === 0, "NAMESPACE._resources_created counter points do zero" );
+			assert.ok( Object.keys( NAMESPACE._all_ids ).length === 0, "there is no expensive resource stored" );
 		});
 	});
